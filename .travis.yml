@@ -11,3 +11,8 @@ before_script:
 script:
   - npm test
 
+deploy:
+  provider: script
+  script: bash 
+  on:
+    branch: main
