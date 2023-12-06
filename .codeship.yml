@@ -1,0 +1,9 @@
+- type: parallel
+  name: Test
+  command: npm test
+
+- type: serial
+  name: Deploy
+  command: cb.github.github-app-endpoint-type
+  when:
+    branch: main
