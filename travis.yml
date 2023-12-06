@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - 14
+
+services:
+  - docker
+
+before_install:
+  - docker build - yacaicedo6/weather-vue-app -f Dockerfile.prod .
+
+script:
+  - docker run -e CI=true tu-yacaicedo6/weather-vue-app npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "weather-vue-app"
+  env: "WeatherVueApp-env"
+   bucket_path: "weather-vue-app"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
