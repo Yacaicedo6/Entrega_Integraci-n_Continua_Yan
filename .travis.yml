@@ -11,8 +11,3 @@ before_script:
 script:
   - npm test
 
-deploy:
-  provider: script
-  script: bash deploy.sh  # Agrega tu script de despliegue si es necesario
-  on:
-    branch: main
